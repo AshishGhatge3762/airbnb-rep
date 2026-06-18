@@ -1,0 +1,33 @@
+deploy_dbt_airbnb:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: tw35939.us-east-2.aws
+
+      # User/password auth
+      user: dbt_u1
+      password: doe
+
+      role: dbt_developers
+      database: AIRBNB
+      warehouse: dbt_warehouse
+      # in the future you should switch this schema to use a new environment variable
+      # definitely switch this to your schema though
+      schema: dev
+      threads: 4
+      client_session_keep_alive: False
+    prod:
+      type: snowflake
+      account: tw35939.us-east-2.aws
+
+      # User/password auth
+      user: dbt_u1
+      password: doe
+
+      role: dbt_developers
+      database: AIRBNB
+      warehouse: dbt_warehouse
+      schema: prod
+      threads: 4
+      client_session_keep_alive: False
